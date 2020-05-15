@@ -1,0 +1,395 @@
+    1  pwd
+    2  ls
+    3  mkdir mydemo
+    4  ls
+    5  cp /home/nidhik/linux/basic/* mydemo/
+    6  cp /home/manager/linux/basic/* mydemo/
+    7  ls
+    8  cd mydemo/
+    9  pwd
+   10  ls
+   11  ls -l 
+   12  ls -lh 
+   13  man ls
+   14  ls
+   15  cp human.vcf towork.txt
+   16  ls
+   17  mv towork.txt variants.txt
+   18  ls
+   19  more variants.txt 
+   20  less variants.txt 
+   21  grep A variants.txt 
+   22  grep -w A variants.txt 
+   23  grep '\sA\s'  variants.txt 
+   24  grep '\sAT\s'  variants.txt 
+   25  grep '\sAT\s'  variants.txt > AT.TXT
+   26  ls
+   27  wc variants.txt 
+   28  wc -l variants.txt 
+   29  man wc
+   30  wc -l AT.TXT 
+   31  wc AT.TXT 
+   32  ls
+   33  ls -l
+   34  ls -lh
+   35  head variants.txt 
+   36  head -n 2 variants.txt 
+   37  head -n 10 variants.txt 
+   38  head -n 10 variants.txt > variants10.txt
+   39  history
+   40  history > nk.txt
+   41  header 
+   42  tail variants.txt
+   43  ls
+   44  rm variants10.txt 
+   45  ls
+   46  grep '\sTA\s' variants.txt > ta.txt
+   47  ls
+   48  cat ta.txt
+   49  cat ta.txt AT.TXT > taat.txt
+   50  ls
+   51  head taat.txt 
+   52  tail taat.txt 
+   53  wc -l AT.TXT 
+   54  WC -l ta.txt
+   55  wc -l ta.txt 
+   56  wc -l taat.txt 
+   57  nano f1.txt 
+   58  ls
+   59  cat f1.txt 
+   60  man nano
+   61  ls
+   62  head -n 2 variants.txt > twolines
+   63  ls
+   64  cat twolines 
+   65  head -l -n 2 variants.txt 
+   66  wc -l < variants.txt 
+   67  tail -n 2 variants.txt >> twolines 
+   68  cat twolines 
+   69  tail -n 2 variants.txt >> twolines 
+   70  cat twolines 
+   71  grep '\sAC\'s variants.txt | wc -l 
+   72  grep '\sAC\'s variants.txt | grep Minus
+   73  grep '\sAC\'s variants.txt | grep Minus | wc -l
+   74  wget ma wget
+   75  man wget
+   76  wget hgdownload.cse.ucsc.edu/goldenPath/hg38/database/ncbiRefSeq.txt.gz
+   77  ls
+   78  ls -l 
+   79  ls -l ncbiRefSeq.txt.gz 
+   80  ls -lh ncbiRefSeq.txt.gz 
+   81  gunzip ncbiRefSeq.txt.gz 
+   82  ls
+   83  man gunzip
+   84  ls -l ncbiRefSeq.txt 
+   85  ls -lh ncbiRefSeq.txt 
+   86  nano ncbiRefSeq.txt 
+   87  grep -ivw chr1 ncbiRefSeq.txt 
+   88  grep -ivw chr1 ncbiRefSeq.txt | grep -i chr10 | head 
+   89  grep -P 'chr10\s\+' ncbiRefSeq.txt 
+   90  head ncbiRefSeq.txt 
+   91  cut -f13 ncbiRefSeq.txt |head
+   92  cut -f2,13 ncbiRefSeq.txt 
+   93  cut -f2,13 ncbiRefSeq.txt | head
+   94  cut-d$'\t'  -f2,13 ncbiRefSeq.txt | head
+   95  cut -f2 ncbiRefSeq.txt 
+   96  cut -f2 ncbiRefSeq.txt | cut -d'.' -f1  
+   97  cut -f2 ncbiRefSeq.txt | cut -d'.' -f2
+   98  cut -f2 ncbiRefSeq.txt | cut -d'.' -f1
+   99  cut -f2 ncbiRefSeq.txt | cut -d'.' -f1 > refseqids
+  100  cut -f2,13 ncbiRefSeq.txt > refseqnames 
+  101  awk
+  102  man awk
+  103  awk '{print}' transcriptome.gtf q
+  104  awk '{print $0}' transcriptome.gtf 
+  105  awk '//{print}' transcriptome.gtf 
+  106  awk '//{print $2,$3,$4}' transcriptome.gtf 
+  107  awk '/TTTTY17B/ {print}' transcriptome.gtf 
+  108  awk '/TTTY17B/ {print}' transcriptome.gtf 
+  109  awk 'NR==1 {print;exit}' ex.txt 
+  110  head ex.txt
+  111  awk 'NR==3 {print;exit}' ex.txt 
+  112  awk '/NOVEL/ {print}' transcriptome.gtf 
+  113  awk '/^[0-9]/ {print} ex.txt
+  114  awk '/^[0-9]/ {print}' ex.txt
+  115  awk '$0 !~/^X/ {print$0 }' ex.txt
+  116  awk '$0 !~/^A/ {print$0 }' ex.txt
+  117  awk '/Corona/ {print "Virus: "$1,"Strain: "$2}' ex.txt
+  118  nano hello.sh 
+  119  ls
+  120  cat hello.sh 
+  121  hello.sh
+  122  ./hello.sh 
+  123  chmod 755 hello.sh
+  124  ls
+  125  ./hello.sh
+  126  nano hello.sh 
+  127  ./hello.sh
+  128  nano hello.sh 
+  129  ./hello.sh 
+  130  echo $SHELL 
+  131  history>day1.txt
+  132  ls
+  133  head day1.txt 
+  134  nano hello.sh 
+  135  cat day1.txt 
+  136  history > day.txt
+  137  paste refseqids refseqnames | head
+  138  paste refseqids refseqnames > refseqidnames
+  139  ls
+  140  head refseqidnames
+  141  head knownToRefSeq.txt
+  142  sort -k2 knownToRefSeq.txt > knownToRefSorted.txt
+  143  ls
+  144  sort -k1 refseqidnames > refseqidnamesSorted.txt
+  145  ls
+  146  join -1 2 -2 1 knownToRefSeqSorted.txt refseqidnamesSorted.txt | head
+  147  sort -k1 refseqidnames > refseqidnamesSorted.txt
+  148  rm knownToRefSorted.txt 
+  149  rm knownToRefSeq.txt 
+  150  ls
+  151  head refseqidnames
+  152  head knownToRefSeq.txt
+  153  head peaks.txt 
+  154  sort -k5 peaks.txt | head
+  155  sort -k5n peaks.txt | head
+  156  sort -k5nr peaks.txt | head
+  157  cut -f13 ncbiRefSeq.txt | sort | head
+  158  cut -f13 ncbiRefSeq.txt | sort | uniq | head
+  159  cut -f13 ncbiRefSeq.txt | sort | uniq -c | head
+  160  cut -f13 ncbiRefSeq.txt | sort | uniq -cu | head
+  161  cut -f13 ncbiRefSeq.txt | sort | uniq -cd | head
+  162  cut -f13 ncbiRefSeq.txt| sort | uniq | head -n 200 | tail -n 100 > glist2
+  163  ls
+  164  cut -f13 ncbiRefSeq.txt| sort | uniq | head -n 150 > glist1
+  165  ls
+  166  comm glist1 glist2
+  167  comm -12 glist1 glist2
+  168  comm -23 glist1 glist2
+  169  comm -13 glist1 glist2
+  170  diff glist1 glist2
+  171  diff -y glist1 glist2
+  172  datamash -s -g 13 count 2 < ncbiRefSeq.txt | head
+  173  datamash -s -g 13 count 2 collapse 2 < ncbiRefSeq.txt | head
+  174  cat ncbiRefSeq.txt | datamash -s -g 13 count 2 | head
+  175  cat ncbiRefSeq.txt | datamash -s -g 13 count 2 | awk '$2>5' | head
+  176  datamash -s -g 3 count 2 < ncbiRefSeq.txt | head
+  177  datamash -s -g 3,4 count 2 < ncbiRefSeq.txt | head
+  178  history > day1final
+  179  ls
+  180  PS1='\[\033[00;35m\]\u\[\033[00m\]@\[\033[00;35m\]\H\[\033[00m\]:\[\033[00;33m\]\W\[\033[00m\] \$\[\033[00;34m '
+  181  cd ~
+  182  ls -a
+  183  ls
+  184  ls -a
+  185  cp .bashrc bashrc_backup
+  186  ls
+  187  vi .bashrc
+  188  echo "Hello yourname"
+  189  exit
+  190  docker ps
+  191  docker ps -a
+  192  docker ps -l
+  193  docker ps -n
+  194  docker ps -n+-1
+  195  docker ps -n=-1
+  196  docker --version
+  197  docker pull ubuntu
+  198  docker images
+  199  docker run -it -d --name $USER ubuntu
+  200  docker ps 
+  201  docker exec -it $USER bash
+  202  docker stop
+  203  docker stop $USER
+  204  docker run -d --name $USER -v ~/Desktop:/mnt -it ubuntu
+  205  exit
+  206  docker run -d --name $USER -v ~/Desktop:/mnt -it ubuntu
+  207  docker exec -it $USER bash
+  208  install nano
+  209  docker run -d --name $USER -v ~/Desktop:/mnt -it ubuntu
+  210  cp -R /home/manager/linux Desktop/.
+  211  mkdir ~/Desktop/test
+  212  nano ~/Desktop/test/hi.txt
+  213  docker pull broadinstitute/gatk:4.1.3.0
+  214  docker run --name $USER.gatk -it broadinstitute/gatk:4.1.3.0
+  215  docker stop $USER.gatk
+  216  docker rm $USER.gatk
+  217  docker exec -it $USER bash
+  218  clear
+  219  pwd
+  220  git clone https://github.com/taoliu/MACS.git
+  221  ls
+  222  cd MACS/
+  223  LS
+  224  ls
+  225  python3 setup.py install
+  226  python3 setup.py install --prefix /home/nidhik
+  227  export PYTHONPATH=/home/userhome/lib/python3.6/site-packages:$PYTHONPAT
+  228  echo $PYTHONPATH
+  229  export PYTHONPATH=/home/nidhik/lib/python3.6/site-packages:$PYTHONPAT
+  230  echo $PYTHONPATH
+  231  export PYTHONPATH=/home/nidhik/lib/python3.6/site-packages
+  232  echo $PATH
+  233  export PATH=/home/nidhik/bin:$PATH
+  234  alias python="python3"
+  235  python3 setup.py install --prefix /home/nidhik
+  236  macs2 -h
+  237  clear
+  238  docker exec -it $USER bash
+  239  clear
+  240  exit
+  241  ps
+  242  docker exec --name -it $USER
+  243  docker exec -it $USER bash
+  244  cd ~/Desktop/linux/advanced/emboss/sample_sequences
+  245  ls -l
+  246  tar cf archive2.tar *.fasta
+  247  ls -lh
+  248  tar xf archive2.tar
+  249  ls -lh
+  250  rm bos.archive.tar.gz
+  251  tar czf bos.archive.tar.gz bos
+  252  ls -l
+  253  ls -lhtar
+  254  tar xzvf bos.archive.tar.gz
+  255  source /etc/profile.d/markcbm.sh
+  256  cp -R /home/nidhik/linux Desktop/.
+  257  cp -R /home/manager/linux Desktop/.
+  258  ls
+  259  ls Desktop/
+  260  pwd
+  261  cd Desktop/linux/advanced/rnaseq
+  262  pwd
+  263  fastqc fastq/*.fastq
+  264  cd index
+  265  bowtie-build mm9_chr1.fa mm9_chr1
+  266  tophat2  -G mm9_chr1.gtf -o  tophat_wt/  index/mm9_chr1 fastq/myoblast_wt.fastq
+  267  tophat2  -G mm9_chr1.gtf -o  tophat_del/  index/mm9_chr1 fastq/myoblast_del.fastq
+  268  cd ..
+  269  tophat2  -G mm9_chr1.gtf -o  tophat_wt/  index/mm9_chr1 fastq/myoblast_wt.fastq
+  270  tophat2  -G mm9_chr1.gtf -o  tophat_del/  index/mm9_chr1 fastq/myoblast_del.fastq
+  271  ls 
+  272  ls tophat_wt
+  273  cat tophat_wt align_summary.txt
+  274  cat tophat_wt/align_summary.txt 
+  275  cat tophat_del/align_summary.txt
+  276  git clone https://github.com/taoliu/MACS.git
+  277  pwd
+  278  ls
+  279  cd MACS/
+  280  sudo apt install docker.io
+  281  $ docker pull ubntu
+  282  docker run -it -d --name $USER ubuntu
+  283  docker run -d --name $USER -v ~/Desktop:/mnt -it ubuntu
+  284  docker pull broadinstitute/gatk:4.1.3.0
+  285  docker run --name $USER.gatk -it broadinstitute/gatk:4.1.3.0
+  286  docker exec
+  287  docker run -it -d --name $USER ubuntu
+  288  who
+  289  ssh -l nidhik 3.228.90.195
+  290  nano .bashrc
+  291  exit
+  292  install_github
+  293  docker exec
+  294  docker exec --help
+  295  ls
+  296  docker pull ubuntu
+  297  docker run -d --name $USER -v ~/Desktop:/mnt -it ubuntu
+  298  docker exec -it $USER bash
+  299  history > day2
+  300  history >day2
+  301  history > day2.txt
+  302  ls
+  303  docker exec
+  304  docker exec -it $USER bash
+  305  history > da2final.txt
+  306  docker exec -it $USER bash
+  307  cd ~/Desktop/linux/advanced/my_first_repo$ ls -l
+  308  cd ~/Desktop/linux/advanced/my_first_repo
+  309  ls -l
+  310  rm README.md
+  311  echo "#myfirstrepo# > README.md
+
+
+  312  git version
+  313  git add README.md
+  314  git commit -m "first commit"
+  315  ls -lhtar
+  316  git remote add origin https://github.com/nidhik
+  317  git remote add origin https://github.com/Nidhikundu
+  318  git remote add origin https://gist.github.com/Nidhikundu
+  319  cd ..
+  320  git clone https://gist.github.com/Nidhikundu
+  321  git clone https://github.com/Nidhikundu/nidhikundu.git
+  322  ls
+  323  cd nidhikundu/
+  324  ls
+  325  git add .
+  326  git commit
+  327  git commit -m "message"
+  328  git push
+  329  git add .
+  330  git commit
+  331  git commit -m "hello.sh"
+  332  git push
+  333  history > gitcommands.txt
+  334  git checkout -b develop
+  335  git status
+  336  git push origin develop
+  337  git checkout master 
+  338  history >gitcommands.txt
+  339  git add
+  340  git add .
+  341  git commit -m "messege"
+  342  git push 
+  343  clear
+  344  cd my_first_report
+  345  cd ..
+  346  crontab -l
+  347  crontab -e
+  348  crontab -l
+  349  crontab -e 
+  350  R
+  351  clear
+  352  -V
+  353  python -V
+  354  cd
+  355  pwd
+  356  nano 
+  357  python3 hello.py 
+  358  nano hello.py 
+  359  python3 hello.py 
+  360  nano hello.py 
+  361  python3 hello.py 
+  362  nano hello.py 
+  363  python hello.py 
+  364  python3 hello.py 
+  365  python3 hello.py
+  366  nano hello.py 
+  367  python3 hello.py 
+  368  pwd
+  369  cp ~/Desktop/hello.py .
+  370  ~/Desktop/linux/advanced/ls
+  371  ~/Desktop/linux/advanced/
+  372  ls
+  373  cp hello.py .
+  374  git add .
+  375  git commit -m "hello.py" 
+  376  git push
+  377  cd Desktop/
+  378  ls
+  379  cd linux/
+  380  ls
+  381  cd advanced/
+  382  ls
+  383  cd nidhikundu/
+  384  ls
+  385  find /home/nidhik -name hello.py
+  386  cp /home/nidhik/hello.py .
+  387  ls -a
+  388  git add .
+  389  git status
+  390  git commit -m "hello.py" hello.py
+  391  git push
+  392  history >gitcommanspydavid
+  393  history > gitcommanspydavid
